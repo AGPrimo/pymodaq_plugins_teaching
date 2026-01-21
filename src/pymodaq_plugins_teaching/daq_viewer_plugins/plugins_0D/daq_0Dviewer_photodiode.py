@@ -89,7 +89,7 @@ class DAQ_0DViewer_photodiode(DAQ_Viewer_base):
             initialized = True
 
         # TODO for your custom plugin (optional) initialize viewers panel with the future type of data
-        self.dte_signal_temp.emit(DataToExport(name='myplugin',
+        self.dte_signal_temp.emit(DataToExport(name='Photodiode',
                                                data=[DataFromPlugins(name='Mock1',
                                                                     data=[np.array([0]), np.array([0])],
                                                                     dim='Data0D',
@@ -121,8 +121,8 @@ class DAQ_0DViewer_photodiode(DAQ_Viewer_base):
         # synchrone version (blocking function)
         data_tot = self.controller.grab_monochromator()
         self.dte_signal.emit(DataToExport(name='myplugin',
-                                          data=[DataFromPlugins(name='Mock1', data=data_tot,
-                                                                dim='Data0D', labels=['dat0', 'data1'])]))
+                                          data=[DataFromPlugins(name='Photodiode', data=[data_tot],
+                                                                dim='Data0D', labels=['Intensity'], units = 'Volts')]))
         #########################################################
 
         # asynchrone version (non-blocking function with callback)
